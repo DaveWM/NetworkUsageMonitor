@@ -4,16 +4,31 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:NetworkUsageMonitor.ViewModels"
-      mc:Ignorable="d" 
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="ViewStatistics">
-    <Grid>
-        <StackPanel>
+    <Controls:MetroContentControl>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto">
+                </ColumnDefinition>
+                <ColumnDefinition Width="*">
+                </ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{DynamicResource MetroCircleButtonStyle}" HorizontalAlignment="Left" Margin="0,10,0,0" Width="35" Height="35" Click="BackButton_Click" VerticalAlignment="Top">
+                <Rectangle Fill="White" Width="15" Height="15">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_arrow_left}" Stretch="Fill" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center">
             <Label Content="{Binding InterfaceName}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,20"/>
             <Label Content="Received (MB)" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,10"/>
             <Label Content="{Binding MBReceived}" ContentStringFormat ="{}{0:0.000}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,10"/>
             <Label Content="Sent (MB)" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,10"/>
             <Label Content="{Binding MBSent}" ContentStringFormat ="{}{0:0.000}"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,10"/>
         </StackPanel>
-    </Grid>
+        </Grid>
+    </Controls:MetroContentControl>
 </Page>

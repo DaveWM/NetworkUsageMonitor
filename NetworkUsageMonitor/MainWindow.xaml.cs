@@ -21,6 +21,7 @@ namespace NetworkUsageMonitor
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private bool _canClose = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,8 +29,15 @@ namespace NetworkUsageMonitor
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (_canClose) return;
             e.Cancel = true;
             this.Hide();
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            _canClose = true;
+            this.Close();
         }
     }
 }
